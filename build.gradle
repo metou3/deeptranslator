@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "deep.translator"
+
+        sourceSets {
+            main {
+                python.srcDir "some/main/python"
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
+        python {
+            buildPython "/usr/bin/python3.8"
+            pip {
+                // A pip requirement specifier, with or without a version number:
+                install "requests"
+            }
+        }
+
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
+            resValue("bool", "development_mode", "true")
+            resValue("bool", "FACEBOOK_LOG_APP_EVENTS", "false")
+            manifestPlaceholders = [crashlyticsEnabled: false]
+
+            resValue("string", "ads_app_id", "ca-app-pub-3940256099942544~3347511713")
+            resValue("string", "native_ads_id", "ca-app-pub-3940256099942544/2247696110")
+            resValue("string", "banner_ads_id", "ca-app-pub-3940256099942544/6300978111")
+            resValue("string", "inter_ads_id", "ca-app-pub-3940256099942544/1033173712")
+            resValue("string", "reward_ads_id", "ca-app-pub-3940256099942544/5224354917")
+            resValue("string", "app_open_ads_id", "ca-app-pub-3940256099942544/3419835294")
+
+        }
+        release {
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "false")
+            resValue("bool", "development_mode", "false")
+            resValue("bool", "FACEBOOK_LOG_APP_EVENTS", "true")
+            manifestPlaceholders = [crashlyticsEnabled: true]
+
+            resValue("string", "ads_app_id", "ca-app-pub-1655193816065306~")
+            resValue("string", "banner_ads_id", "ca-app-pub-1655193816065306/")
+            resValue("string", "native_ads_id", "ca-app-pub-1655193816065306/")
+            resValue("string", "inter_ads_id", "ca-app-pub-1655193816065306/")
+            resValue("string", "reward_ads_id", "ca-app-pub-1655193816065306/")
+            resValue("string", "app_open_ads_id", "ca-app-pub-1655193816065306/")
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.gms:play-services-ads:19.8.0'
+
+}

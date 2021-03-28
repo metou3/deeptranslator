@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+
+    android:weightSum="5">
+
+    <EditText
+
+        android:layout_weight="1"
+            android:id="@+id/input_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+    </EditText>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/from_lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        </View>
+        <ImageButton
+            android:id="@+id/btnSpeakInputText"
+            android:src="@drawable/ic_baseline_volume_up_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/copyInputText"
+            android:src="@drawable/ic_baseline_content_copy_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </ImageButton>
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_weight="1"
+        android:id="@+id/output_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/to_lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+        </View>
+
+        <ImageButton
+            android:id="@+id/btnSpeakOutputText"
+            android:src="@drawable/ic_baseline_volume_up_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/copyOutputText"
+            android:src="@drawable/ic_baseline_content_copy_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </ImageButton>
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btnRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Record">
+        </Button>
+
+        <Button
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btnTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Translate">
+        </Button>
+
+    </LinearLayout>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
+
+</LinearLayout>
